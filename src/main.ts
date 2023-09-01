@@ -1,9 +1,21 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { TelegramBotModule } from './telegram-bot/telegram-bot.module';
+import * as passport from 'passport';
+import * as session from 'express-session';
+
 
 async function bootstrap() {
-  const app = await NestFactory.create(TelegramBotModule);
+  
+  const app = await NestFactory.create(AppModule);
+  app.use(
+    session({
+      secret: 'your-secret-key', // Replace with your actual secret key
+      resave: false,
+      saveUninitialized: false,
+    }),
+  );
+  app.use(passport.initialize()); 
+  app.use(passport.session());
   await app.listen(3000);
 }
 bootstrap();
