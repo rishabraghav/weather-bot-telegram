@@ -6,7 +6,7 @@ import * as cors from 'cors';
 
 
 async function bootstrap() {
-  const PORT = process.env.PORT || 3001;
+  const PORT = process.env.PORT || 3000;
   const app = await NestFactory.create(AppModule);
   app.use(
     session({
