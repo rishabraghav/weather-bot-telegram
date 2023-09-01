@@ -6,7 +6,7 @@ import * as cors from 'cors';
 
 
 async function bootstrap() {
-  
+  const PORT = process.env.PORT || 3001;
   const app = await NestFactory.create(AppModule);
   app.use(
     session({
@@ -18,6 +18,6 @@ async function bootstrap() {
   app.use(passport.initialize()); 
   app.use(passport.session());
   app.use(cors());
-  await app.listen(3000);
+  await app.listen(PORT);
 }
 bootstrap();
