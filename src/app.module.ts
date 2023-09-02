@@ -29,7 +29,7 @@ export class AppModule implements NestModule {
   }
 }
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
 
 bot.telegram.setWebhook(`${process.env.URL}/your-webhook-path`);
 
